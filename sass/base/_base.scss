@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before{
+    margin:0;
+    padding:0;
+    box-sizing: inherit;
+}
+html{
+
+    //1 rem is equivalent to
+    font-size: 62.5% ; /*using font size 10 converting into percentage by (10/16)*100 = 62.5%;*/
+
+   
+
+   /* @include respond-phone(phone){
+        font-size:50%;
+    }*/  // I dont need this media query because it applies less than 600px also tab-port media query applies less than 900px and also their font sizes are same 
+
+    @include respond(tab-land){
+        font-size:56.25%; //1 rem =9px, 9/16 = 56.25%
+    }
+    
+    
+    @include respond(tab-port){
+        font-size:50%; //1 rem =8px, 8/16 = 50%
+    }
+
+   
+
+    @include respond(big-desktop){
+        font-size:75%;  //1 rem =12px, 12/16 = 75%
+    }
+}
+body{
+    
+    box-sizing: border-box;
+    padding:3rem;
+    @include respond(tab-port){
+        padding: 0;//1 rem =8px, 8/16 = 50%
+    }
+}

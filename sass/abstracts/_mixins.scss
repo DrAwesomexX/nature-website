@@ -1,0 +1,63 @@
+@mixin clearfix{
+    &::after{
+
+        content:"";
+    display:table;
+    clear:both;
+    }
+   
+
+}
+
+@mixin center{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+
+//Media query manager
+
+/* 0-600px: phone
+   600-900px: tablet portrait
+   900-1200px: tablet landscape
+   [1200-1800]: is where normal styles apply
+   1800px +: big desktop
+
+   */
+
+
+
+
+/* $breakpoint- it is the argument choice which determines the pixel of phone tablet or desktop
+ phone
+ tab-port
+ tab-land
+ big-desktop
+
+*/
+
+
+/* order: base + typography > general layout + grid > page layout > components*/
+
+@mixin respond($break-point){
+
+    @if $break-point == phone{
+        @media(max-width:37.5em){@content};  //600px, 600/16
+    }
+
+    @if $break-point == tab-port{
+        @media(max-width:56.25em){@content}; //900px
+    }
+
+    @if $break-point == tab-land{
+        @media(max-width:75em){@content};  //1200px
+    }
+
+    @if $break-point == big-desktop{
+        @media (min-width:112.5em){@content}; //1800px
+        //if it is more than 1800 px than this media query will happen
+    }
+
+}
